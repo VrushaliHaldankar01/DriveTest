@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header-->
+  <%- include('layout/head'); -%>
+  <body>
+    <!-- Navigation-->
+    <%- include('layout/nav'); -%>
+    <!-- Page Header-->
+    <section style="background-color: #f7e1e5">
+      <div class="container center-box">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-lg-6 py-5">
+            <div class="card">
+              <div class="card-body">
+                <div class="custom-box">
+                  <h3>G2 Page - Personal Information</h3>
+                  <form
+                    action="/drivetest/store"
+                    method="POST"
+                    id="drivetestForm"
+                  >
+                    <!-- Personal Information Section -->
+                    <div class="form-group mb-3">
+                      <label for="firstName">First Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="Enter First Name"
+                        value="<%= storedata && storedata.firstName ? storedata.firstName : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="lastName">Last Name</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Enter Last Name"
+                        value="<%= storedata && storedata.lastName ? storedata.lastName : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="licenseNumber"
+                        >License Number (8 characters alphanumeric)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="licenseNumber"
+                        name="licenseNumber"
+                        placeholder="Enter License Number"
+                        value="<%= storedata && storedata.licenseNumber ? storedata.licenseNumber : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="age">Age</label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="age"
+                        name="age"
+                        placeholder="Enter Age"
+                        value="<%= storedata && storedata.age ? storedata.age : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="dob">Date of Birth</label>
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="dob"
+                        name="dob"
+                        value="<%= storedata && storedata.dob ? storedata.dob : '' %>"
+                      />
+                    </div>
+
+                    <!-- Car Information Section -->
+                    <h3 class="pt-4">Car Information</h3>
+                    <div class="form-group mb-3">
+                      <label for="car_details.make">Make</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="car_details.make"
+                        name="car_details.make"
+                        placeholder="Enter Car Make"
+                        value="<%= storedata && storedata.make ? storedata.make : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="car_details.model">Model</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="car_details.model"
+                        name="car_details.model"
+                        placeholder="Enter Car Model"
+                        value="<%= storedata && storedata.model ? storedata.model : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="car_details.year">Year</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="car_details.year"
+                        name="car_details.year"
+                        placeholder="Enter Car Year"
+                        value="<%= storedata && storedata.year ? storedata.year : '' %>"
+                      />
+                    </div>
+                    <div class="form-group mb-3">
+                      <label for="car_details.plateNumber">Plate Number</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="car_details.plateNumber"
+                        name="car_details.plateNumber"
+                        placeholder="Enter Plate Number"
+                        value="<%= storedata && storedata.plateNumber ? storedata.plateNumber : '' %>"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="appointmentDate">Date:</label>
+                      <input type="date" class="form-control"
+                      id="appointmentDate" name="date"
+                      onchange="this.form.submit()" <% if (selectedDate !==
+                      undefined && selectedDate !== null) { %> value="<%=
+                      selectedDate %>" <% } %> />
+                    </div>
+
+                    <% if (selectedDate !== undefined) { %>
+                    <div class="form-group">
+                      <label for="appointmentTimes">Available Slots:</label>
+                      <% if (bookedTimes.length > 0) { %>
+                      <select
+                        class="form-control"
+                        id="appointmentTimes"
+                        name="times"
+                        multiple
+                      >
+                        <% bookedTimes.forEach(time => { %>
+                        <option value="<%= time %>"><%= time %></option>
+                        <% }); %>
+                      </select>
+                      <% } else { %>
+                      <p>No slots available for the selected date.</p>
+                      <% } %>
+                    </div>
+                    <% } %>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn btn-primary">
+                      Submit
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer-->
+    <%- include('layout/footer'); -%>
+    <!-- Bootstrap core JS-->
+    <%- include('layout/script'); -%>
+
+    <!-- Script to save and load form data from localStorage -->
+  </body>
+</html>

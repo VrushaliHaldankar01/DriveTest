@@ -1,0 +1,104 @@
+.nav {
+  --bs-nav-link-padding-x: 1rem;
+  --bs-nav-link-padding-y: 0.5rem;
+  --bs-nav-link-font-weight: ;
+  --bs-nav-link-color: var(--bs-link-color);
+  --bs-nav-link-hover-color: var(--bs-link-hover-color);
+  --bs-nav-link-disabled-color: #6c757d;
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+
+.nav-link {
+  display: block;
+  padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+  font-size: var(--bs-nav-link-font-size);
+  font-weight: var(--bs-nav-link-font-weight);
+  color: white;
+  /* color: var(--bs-nav-link-color); */
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        header.masthead {
+          position: relative;
+          margin-bottom: 3rem;
+          padding-top: calc(8rem + 57px);
+          padding-bottom: 8rem;
+          background: no-repeat center center;
+          background-color: #6c757d;
+          background-size: cover;
+          background-attachment: scroll;
+        }
+        header.masthead:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: #212529;
+          opacity: 0.5;
+        }
+        header.masthead .page-heading,
+        header.masthead .post-heading,
+        header.masthead .site-heading {
+          color: #fff;
+        }
+        header.masthead .page-heading,
+        header.masthead .site-heading {
+          text-align: center;
+        }
+        header.masthead .page-heading h1, header.masthead .page-heading .h1,
+        header.masthead .site-heading h1,
+        header.masthead .site-heading .h1 {
+          font-size: 3rem;
+        }
+        header.masthead .page-heading .subheading,
+        header.masthead .site-heading .subheading {
+          font-size: 1.5rem;
+          font-weight: 300;
+          line-height: 1.1;
+          display: block;
+          margin-top: 0.625rem;
+          font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+          "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        header.masthead .post-heading h1, header.masthead .post-heading .h1 {
+          font-size: 2.25rem;
+        }
+        header.masthead .post-heading .meta,
+        header.masthead .post-heading .subheading {
+          line-height: 1.1;
+          display: block;
+        }
+        header.masthead .post-heading .subheading {
+          font-size: 1.5rem;
+          font-weight: 600;
+          margin: 0.75rem 0 2rem;
+          font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        header.masthead .post-heading .meta {
+          font-size: 1.25rem;
+          font-weight: 300;
+          font-style: italic;
+          font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        header.masthead .post-heading .meta a {
+          color: #fff;
+        }
+      
+        
+        footer {
+          margin-top: auto; /* Push the footer to the bottom */
+        }
+        

@@ -1,0 +1,75 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const bcrypt = require("bcrypt");
+var uniqueValidator = require("mongoose-unique-validator");
+
+const DriveTestSchema = new Schema({
+  // id: String,
+  firstName: { type: String, default: "" },
+  lastName: { type: String, default: "" },
+  licenseNumber: { type: String, default: "" },
+  age: { type: Number, default: 0 },
+  dob: { type: String, default: "" },
+  testtype: { type: String, default: "" },
+  testResult: { type: String, default: "" },
+  comments: { type: String, default: "" },
+
+  Username: {
+    type: String,
+    // default: "",
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    default: "",
+  },
+  // Username: { type: String, default: "" },
+  // password: { type: String, default: "demo" },
+  UserType: { type: String, default: "Driver" },
+  car_details: {
+    make: { type: String, default: "" },
+    model: { type: String, default: "" },
+    year: { type: Number, default: 0 },
+    plateNumber: { type: String, default: "" },
+  },
+  // appointmentid: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "appointment",
+  //   required: true,
+  // },
+  appointmentId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Appointment",
+  },
+  datePosted: {
+    type: Date,
+    default: new Date(),
+  },
+});
+DriveTestSchema.pre("save", function (next) {
+  const DriveTest = this;
+  bcrypt.hash(DriveTest.password, 10, (error, hash) => {
+    DriveTest.password = hash;
+    next();
+  });
+});
+DriveTestSchema.pre("save", function (next) {
+  const DriveTest = this;
+  bcrypt.hash(DriveTest.licenseNumber, 10, (error, hash) => {
+    DriveTest.licenseNumber = hash;
+    next();
+  });
+});
+
+// DriveTestSchema.methods.hashLicenseNumber = function () {
+//   const DriveTest = this;
+
+//   // Hash the licenseNumber
+//   bcrypt.hash(DriveTest.licenseNumber, 10, (error, hash) => {
+//     DriveTest.licenseNumber = hash;
+//   });
+// };
+const DriveTest = mongoose.model("drivetest", DriveTestSchema);
+module.exports = DriveTest;

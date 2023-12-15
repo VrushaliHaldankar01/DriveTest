@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- header-->
+  <%- include('layout/head'); -%>
+  <body>
+    <!-- Navigation-->
+    <%- include('layout/nav'); -%>
+    <!-- Page Header-->
+
+    <!-- Main content -->
+
+    <section style="background-color: #f7e1e5">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-md-6 col-lg-7">
+            <div
+              class="card mt-5 mb-5"
+              style="border-radius: 1rem; overflow: hidden; height: 100%"
+            >
+              <div class="card-body p-4 p-lg-5 text-black">
+                <!-- Display login and register errors -->
+
+                <!-- End display login and register errors -->
+                <!-- Pills navs -->
+                <ul
+                  class="nav nav-pills nav-justified mb-3"
+                  id="ex1"
+                  role="tablist"
+                >
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="nav-link active"
+                      id="tab-login"
+                      data-bs-toggle="pill"
+                      href="#pills-login"
+                      role="tab"
+                      aria-controls="pills-login"
+                      aria-selected="true"
+                      >Login</a
+                    >
+                  </li>
+                  <li class="nav-item" role="presentation">
+                    <a
+                      class="nav-link"
+                      id="tab-register"
+                      data-bs-toggle="pill"
+                      href="#pills-register"
+                      role="tab"
+                      aria-controls="pills-register"
+                      aria-selected="false"
+                      >Register</a
+                    >
+                  </li>
+                </ul>
+                <!-- Pills navs -->
+
+                <!-- Pills content -->
+                <div class="tab-content">
+                  <div
+                    class="tab-pane fade show active"
+                    id="pills-login"
+                    role="tabpanel"
+                    aria-labelledby="tab-login"
+                  >
+             
+                    <form action="/posts/loginUser" method="POST">
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="Username"
+                          name="Username"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="loginName"
+                          >username</label
+                        >
+                      </div>
+
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="loginPassword"
+                          >Password</label
+                        >
+                      </div>
+
+                      <!-- 2 column grid layout -->
+                      <div class="row mb-4">
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <!-- Checkbox -->
+                          <div class="form-check mb-3 mb-md-0">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value=""
+                              id="loginCheck"
+                              checked
+                            />
+                            <label class="form-check-label" for="loginCheck">
+                              Remember me
+                            </label>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 d-flex justify-content-center">
+                          <!-- Simple link -->
+                          <a href="#!">Forgot password?</a>
+                        </div>
+                      </div>
+
+                      <!-- Submit button -->
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-block mb-4"
+                      >
+                        Sign in
+                      </button>
+
+                      <!-- Register buttons -->
+                      <div class="text-center">
+                        <p>
+                          Not a member?
+                          <a href="#pills-register" data-bs-toggle="pill"
+                            >Register</a
+                          >
+                        </p>
+                      </div>
+                    </form>
+                  </div>
+                  <div
+                    class="tab-pane fade"
+                    id="pills-register"
+                    role="tabpanel"
+                    aria-labelledby="tab-register"
+                  >
+                  <% if(errors != null && errors.length > 0){ %>
+                    <ul id="errorContainer" class="list-group"></ul>
+                    <% for (var i = 0; i < errors.length; i++) { %>
+                    <li class="list-group-item list-group-item-danger"><%=
+                    errors[i] %></li>
+                    <% } %>
+                    </ul>
+<!--                  
+                    <script>
+                      // Script to switch to the "Register" tab when there are errors
+                      document.addEventListener("DOMContentLoaded", function() {
+                        var registerTab = document.getElementById("tab-register");
+                        registerTab.click(); 
+              
+                     
+                        
+                      });
+                      
+                    </script> -->
+                    <script>
+                      document.addEventListener("DOMContentLoaded", function() {
+                        var registerTab = document.getElementById("tab-register");
+                        var registerForm = document.getElementById("registrationForm");
+                  
+                        if (registerTab && registerForm) {
+                          // Switch to the register tab
+                          registerTab.click();
+                  
+                          
+                    
+                  
+                          // Reload the page after 3 seconds
+                          setTimeout(function() {
+                            location.reload();
+                          }, 3000);
+                        }
+                      });
+                    </script>
+                    <% } %>
+                    <form   id="registrationForm" action="/posts/signupUser" method="POST">
+                      <!-- Name input -->
+                      <!-- <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="registerName"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="registerName"
+                          >Name</label
+                        >
+                      </div> -->
+
+                      <!-- Username input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="text"
+                          id="Username"
+                          name="Username"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="registerUsername"
+                          >Username</label
+                        >
+                      </div>
+
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="email"
+                          id="Email"
+                          name="Email"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="registerEmail"
+                          >Email</label
+                        >
+                      </div>
+
+                      <!-- Password input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="password"
+                          >Password</label
+                        >
+                      </div>
+
+                      <!-- Repeat Password input -->
+                      <div class="form-outline mb-4">
+                        <input
+                          type="password"
+                          id="registerRepeatPassword"
+                          class="form-control"
+                        />
+                        <label class="form-label" for="registerRepeatPassword"
+                          >Repeat password</label
+                        >
+                      </div>
+                      <!-- User Type dropdown -->
+                      <div class="mb-4">
+                        <label for="userType" class="form-label"
+                          >User Type</label
+                        >
+                        <select
+                          id="UserType"
+                          class="form-select"
+                          name="UserType"
+                        >
+                          <option value="Driver">Driver</option>
+                          <option value="Examiner">Examiner</option>
+                          <option value="Admin">Admin</option>
+                        </select>
+                      </div>
+                      <!-- Checkbox -->
+                      <div
+                        class="form-check d-flex justify-content-center mb-4"
+                      >
+                        <input
+                          class="form-check-input me-2"
+                          type="checkbox"
+                          value=""
+                          id="registerCheck"
+                          checked
+                        />
+                        <label class="form-check-label" for="registerCheck">
+                          I have read and agree to the terms
+                        </label>
+                      </div>
+
+                      <!-- Submit button -->
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-block mb-3"
+                      >
+                        Sign up
+                      </button>
+                    </form>
+                  </div>
+                </div>
+                <!-- Pills content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer-->
+    <%- include('layout/footer'); -%>
+    <!-- Bootstrap core JS-->
+    <%- include('layout/script'); -%>
+
+  
+  </body>
+
+</html>
